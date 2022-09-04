@@ -1,0 +1,9 @@
+.media-element__container > img {
+  width: 30%;
+}
+
+.media-element__container > video {
+  width: 100%;
+  padding: 10px;
+  display: block;
+}
