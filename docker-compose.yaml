@@ -1,4 +1,4 @@
-version: "1.0"
+version: "3.8"
 services:
   backend:
     build: ./backend
@@ -6,8 +6,8 @@ services:
     ports:
       - '8000:8000'
     volumes:
-      - ./backend:/app
-      - ./app/node_modules
+      - /Users/mohammedajao/Desktop/intro-to-os-ta-interview/backend:/app
+      - /Users/mohammedajao/Desktop/intro-to-os-ta-interview/backend/node_modules:/app/node_modules
   frontend:
     build: ./frontend
     container_name: frontend_container

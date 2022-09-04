@@ -74,6 +74,7 @@ const upload = multer({
     const fileSize = parseInt(req.headers['content-length']);
     conn.db.stats((err, stats) => {
       if (stats.storageSize + fileSize > process.env.MAX_COLLECTION_SIZE) {
+        console.log('File size exceeds capacity');
         req.fileValidationError = 'File size exceeds database capacity.';
         callback(new Error('File size exceeds database capacity.'), false);
       }
@@ -88,21 +89,19 @@ const upload = multer({
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use(methodOverride('_method'));
-app.set('view engine', 'ejs');
 
 // Routes
 app.get('/', (req, res) => {
   return res.status(200).send({
     message: 'Hello, world!',
   });
-  // res.render('index');
 });
 
 const uploadMiddleware = (req, res, next) => {
   const middlewareObj = upload.single(process.env.FILE_UPLOAD_ARGNAME);
   middlewareObj(req, res, function(err) {
     if (req.fileValidationError) {
-      next(new Error('File validation error!'));
+      next(new Error(req.fileValidationError));
     } else {
       next();
     }

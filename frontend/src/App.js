@@ -52,7 +52,7 @@ function App() {
       <h3>Notes</h3>
       <ul>
         <li>Clicking on files deletes them</li>
-        <li>Only media files are accepted like images, except PDFs, and videos. Others are rejected.</li>
+        <li>Only basic media files are accepted like images and mp4 videos. Others are rejected. PDFs too.</li>
         <li>Decided to use media over arbitrary file types to showcase it easily. I can add arbitrary types too but I wouldn't have time to test so many different ones.</li>
         <li>Current largest file tested: 115.6MB</li>
       </ul>
